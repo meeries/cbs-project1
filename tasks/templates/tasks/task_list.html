@@ -1,0 +1,23 @@
+<h1>Task App</h1>
+
+{% if user.is_authenticated %}
+    <p>You are logged in as {{ user.username }}</p>
+    <a href="{% url 'logout' %}" style="color: red;">Logout</a>
+{% endif %}
+
+<h2>My Tasks: </h2>
+
+{% if tasks %}
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.task }} - Due: {{ task.due_date }} 
+                <a href="{% url 'delete_task' task.id %}" style="color: red;">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tasks yet!</p>
+{% endif %}
+
+<a href="{% url 'add_task' %}">Add Task</a>
