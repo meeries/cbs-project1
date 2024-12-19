@@ -16,7 +16,7 @@ def task_detail(request, task_id):
 # Flaw: Broken Access Control
     task = Task.objects.get(id=task_id) 
     return render(request, 'tasks/task_detail.html', {'task': task})
-# Fix: Replace the previous lines with code that includes a check that ensures the task being viewed belongs to the user viewing it:
+# Fix: Replace the previous two lines (the function body) with code that includes a check that ensures the task being viewed belongs to the user viewing it:
 #   try:
 #       task = Task.objects.get(id=task_id, user=request.user) 
 #       return render(request, 'tasks/task_detail.html', {'task': task})
