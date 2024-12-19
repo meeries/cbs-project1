@@ -13,32 +13,32 @@ This project was done with Python and Django, using the OWASP 2021 list for erro
 
 ## Flaws and their fixes:
 
-### Flaw 1: 
+## Flaw 1: 
 link
-#### Description
-#### Fix
+### Description
+### Fix
 
-### Flaw 2:
+## Flaw 2:
 link
-#### Description
-#### Fix
+### Description
+### Fix
 
-### Flaw 3: 
+## Flaw 3: 
 link
-#### Description
-#### Fix
+### Description
+### Fix
 
-### Flaw 4: 
+## Flaw 4: 
 link
-#### Description
-#### Fix
+### Description
+### Fix
 
-### Flaw 5: 
+## Flaw 5: 
 link
-#### Description
-#### Fix
+### Description
+### Fix
 
-### Flaw 6: 
+## Flaw 6: 
 link
-#### Description
-#### Fix
+### Description
+### Fix
