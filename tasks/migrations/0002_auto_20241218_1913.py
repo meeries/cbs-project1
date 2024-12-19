@@ -2,7 +2,7 @@ from django.db import migrations
 
 def create_user(apps, schema_editor):
     User = apps.get_model('auth', 'User')
-    User.objects.create_user('username', 'user@example.com', 'password')
+    User.objects.create_user('Alligator', 'user@example.com', 'Crocodile')
 
 class Migration(migrations.Migration):
 
