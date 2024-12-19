@@ -52,10 +52,21 @@ Instead of using a raw SQL query to delete a task, we can use Object-relational 
 
 https://github.com/meeries/cbs-project1/blob/6c899d806484b5a13cc2539c4c324e23ce247115/tasks/views.py#L49
 
-## Flaw 4: 
-link
+## Flaw 4: Cryptographic failures
+https://github.com/meeries/cbs-project1/blob/d83dc6fb165ccd8cd731a48a42478015cdd22675/taskapp/settings.py#L24
+https://github.com/meeries/cbs-project1/blob/d83dc6fb165ccd8cd731a48a42478015cdd22675/taskapp/settings.py#L30
+
 ### Description
+Cryptographic failures are security failures that occur when sensitive data is not properly protected. This can lead to malicious users having access to other users' sensitive information, such as passwords or secret keys. An example of this is hardcoding a ```SECRET_KEY``` to the applications code (in this project, ```settings.py```), leaving it vulnerable to attackers if they have access to the code. Another cryptographic failure flaw in this app is hardcoding ```DEBUG = True```. This can allow a malicious user to gain access to vulnerable information.
+
 ### Fix
+Instead of hardcoding the ```SECRET_KEY``` in ```settings.py```, we can create an ```.env``` file, that includes the ```SECRET_KEY``` we want to use. This file is added to the ```.gitignore```file, so it doesn't get committed to the repository, and thus get exposed to anyone who has access to the repository. We also change ```DEBUG = True``` to ```DEBUG = False```
+
+Fix for ```SECRET_KEY```:
+https://github.com/meeries/cbs-project1/blob/d83dc6fb165ccd8cd731a48a42478015cdd22675/taskapp/settings.py#L26
+
+Fix for ```DEBUG = True```:
+https://github.com/meeries/cbs-project1/blob/d83dc6fb165ccd8cd731a48a42478015cdd22675/taskapp/settings.py#L32
 
 ## Flaw 5: 
 link
