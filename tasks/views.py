@@ -11,6 +11,18 @@ def task_list(request):
     tasks = Task.objects.filter(user=request.user)
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
+@login_required(login_url='login')
+def task_detail(request, task_id):
+# Flaw: Broken Access Control
+    task = Task.objects.get(id=task_id) 
+    return render(request, 'tasks/task_detail.html', {'task': task})
+# Fix: Replace the previous lines with code that includes a check that ensures the task being viewed belongs to the user viewing it:
+#   try:
+#       task = Task.objects.get(id=task_id, user=request.user) 
+#       return render(request, 'tasks/task_detail.html', {'task': task})
+#   except Task.DoesNotExist:
+#       return redirect('task_list')
+
 # Flaw: CSRF Vulnerability
 # Fix: 
 # Remove @csrf_exempt to enable Django's CSRF protection

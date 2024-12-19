@@ -11,7 +11,7 @@
     <ul>
         {% for task in tasks %}
             <li>
-                {{ task.task }} - Due: {{ task.due_date }} 
+                <a href="{% url 'task_detail' task.id %}">{{ task.task }}</a> - Due: {{ task.due_date }} 
                 <a href="{% url 'delete_task' task.id %}" style="color: red;">Delete</a>
             </li>
         {% endfor %}

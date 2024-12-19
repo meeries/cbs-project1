@@ -1,0 +1,19 @@
+<h1>Task App</h1>
+
+{% if user.is_authenticated %}
+    <p>You are logged in as {{ user.username }}</p>
+    <a href="{% url 'logout' %}" style="color: red;">Logout</a>
+{% endif %}
+
+<h2>Task Detail:</h2>
+
+<div>
+    {% if task %}
+        <p>Task: {{ task.task }}</p>
+        <p>Due Date: {{ task.due_date }}</p>
+
+        <a href="{% url 'task_list' %}">Back to Task List</a>
+    {% else %}
+        <p>Task not found!</p>
+    {% endif %}
+</div>
