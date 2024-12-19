@@ -28,7 +28,7 @@ Fix in tasks/views.py: https://github.com/meeries/cbs-project1/blob/b937cedd5089
 Fix in tasks/templates/tasks/add_task.html form: https://github.com/meeries/cbs-project1/blob/b937cedd5089da948cd96f96facddac11d71a135/tasks/templates/tasks/add_task.html#L12
 
 
-## Flaw 2 Broken Access Control:[
+## Flaw 2 Broken Access Control:
 https://github.com/meeries/cbs-project1/blob/ff0fd04357f81ba145619d7303a83c14ac5c3be9/tasks/views.py#L19
 
 ### Description
@@ -78,7 +78,14 @@ Security misconfiguration vulnerabilities occur when security settings are impro
 This flaw can be fixed by changing ```DEBUG = True``` to ```DEBUG = False```. This way, there are no detailed error messages when there is an issue with the application.
 https://github.com/meeries/cbs-project1/blob/c5444765fb942156da8add7c7de2e713615f1f43/taskapp/settings.py#L32
 
-## Flaw 6: 
-link
+## Flaw 6: Identification and Authentication Failures
+https://github.com/meeries/cbs-project1/blob/e592e83ba8fc4003866c6479967471953a26eb2a/taskapp/settings.py#L94
+
 ### Description
+Identification and authentication failures are vulnerabilities in the way an application verifies and manages users' identities. These vulnerabilities can allow malicious users to gain unauthorized access to another user's data, for example. There are many ways these vulnerabilities can manifest in an application, like allowing weak passwords, storing passwords unsafely or improper session management.
+In this project, this flaw can be seen in that there are no requirements to what type of password can be created. Thus, a user can choose a weak password, that can be easy to guess or crack, via brute force attacks or credential stuffing.
+
 ### Fix
+The fix provided for this flaw is including password validators, that ensure the password a user chooses fills the required criteria. Django has built-in password validators, that are used in the fix for this flaw. These validators check that the password has at least 8 characters, and is not some of the most common passwords, like "password" or "12345678".
+
+https://github.com/meeries/cbs-project1/blob/6780d1df1f486aee8b2f91004cd2f2dadecac08a/taskapp/settings.py#L95
