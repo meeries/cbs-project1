@@ -1,0 +1,17 @@
+<h1>Task App</h1>
+{% if user.is_authenticated %}
+    <p>You are logged in as {{ user.username }}</p>
+    <a href="{% url 'logout' %}" style="color: red;">Logout</a>
+{% endif %}
+
+<h2>Are you sure you want to delete the task?</h2>
+
+<p>Task: {{ task.task }}</p>
+<p>Due: {{ task.due_date }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, delete task</button>
+</form>
+
+<a href="{% url 'task_list' %}">Cancel</a>

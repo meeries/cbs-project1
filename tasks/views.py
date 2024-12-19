@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
@@ -38,17 +38,20 @@ def add_task(request):
 
 @login_required(login_url='login')
 def delete_task(request, task_id):
+    if request.method == "POST":
 # Flaw: (SQL) Injection
-    conn = sqlite3.connect('db.sqlite3')
-    cursor = conn.cursor()
-    cursor.execute(f"DELETE FROM tasks_task WHERE id = {task_id}")  # BAD: Directly interpolating user input
-    conn.commit()
-    conn.close()
-    return redirect('task_list')
-# Fix: Replace the function body with the following code that uses Django's own ORM and deletes the task safely
-#    task = Task.objects.get(id=task_id, user=request.user)
-#    task.delete()
-#    return redirect('task_list')
+        conn = sqlite3.connect('db.sqlite3')
+        cursor = conn.cursor()
+        cursor.execute(f"DELETE FROM tasks_task WHERE id = {task_id}") 
+        conn.commit()
+        conn.close()
+        return redirect('task_list')
+# Fix: Replace the code after the if-statement with the following code that uses Django's own ORM and deletes the task safely
+#        task = Task.objects.get(id=task_id, user=request.user)
+#        task.delete()
+#        return redirect('task_list')
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    return render(request, 'tasks/confirm_delete.html', {'task': task})
 
 def user_login(request):
     if request.method == 'POST':
