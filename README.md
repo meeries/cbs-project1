@@ -1,4 +1,12 @@
 # cbs-project1
 LINK: https://github.com/meeries/csb-project1
 
-In this project I use the OWASP 2021 list.
+This project was done with Python and Django, using the OWASP 2021 list for errors.
+
+## Starting the app
+
+1. Clone this repository
+2. Navigate to the directory that has file ```manage.py``` and run command ```python3 manage.py runserver```
+3. Execute the migrations by running commands ```python3 manage.py makemigrations```
+   and ```python3 manage.py migrate```
+4. Open the address shown in the terminal, and log in with username: ```username``` and password: ```password```
