@@ -9,7 +9,7 @@ This project was done with Python and Django, using the [OWASP 2021](https://owa
 2. Navigate to the directory that has file ```manage.py``` and run command ```python3 manage.py runserver```
 3. Execute the migrations by running commands ```python3 manage.py makemigrations```
    and ```python3 manage.py migrate```
-4. Open the address shown in the terminal, and log in with username: ```username``` and password: ```password```
+4. Open the address shown in the terminal, and log in with username: ```Alligator``` and password: ```Crocodile```
 
 ## Flaws and their fixes:
 
