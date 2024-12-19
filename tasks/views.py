@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.decorators.csrf import csrf_exempt
-
+import sqlite3
 
 @login_required(login_url='login')
 def task_list(request):
@@ -24,8 +24,7 @@ def task_detail(request, task_id):
 #       return redirect('task_list')
 
 # Flaw: CSRF Vulnerability
-# Fix: 
-# Remove @csrf_exempt to enable Django's CSRF protection
+# Fix: Remove @csrf_exempt to enable Django's CSRF protection
 @csrf_exempt
 @login_required(login_url='login')
 def add_task(request):
@@ -39,9 +38,17 @@ def add_task(request):
 
 @login_required(login_url='login')
 def delete_task(request, task_id):
-    task = Task.objects.get(id=task_id, user=request.user)
-    task.delete()
+# Flaw: (SQL) Injection
+    conn = sqlite3.connect('db.sqlite3')
+    cursor = conn.cursor()
+    cursor.execute(f"DELETE FROM tasks_task WHERE id = {task_id}")  # BAD: Directly interpolating user input
+    conn.commit()
+    conn.close()
     return redirect('task_list')
+# Fix: Replace the function body with the following code that uses Django's own ORM and deletes the task safely
+#    task = Task.objects.get(id=task_id, user=request.user)
+#    task.delete()
+#    return redirect('task_list')
 
 def user_login(request):
     if request.method == 'POST':
