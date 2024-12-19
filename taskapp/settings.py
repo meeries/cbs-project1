@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4#*!%)g(#(w%ai_@!_zjniu#pzr)2q(t_--!e4=ss*pckbud9g
 # SECRET_KEY = os.environ[‘SECRET_KEY’]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Flaw: Cryptographic failures
+# Flaw: Cryptographic failures AND Security Misconfiguration
 DEBUG = True
 # Fix: Replace DEBUG = True with DEBUG = False
 
