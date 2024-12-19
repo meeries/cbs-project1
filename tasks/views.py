@@ -3,6 +3,7 @@ from .models import Task
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.decorators.csrf import csrf_exempt
 
 
 @login_required(login_url='login')
@@ -10,6 +11,10 @@ def task_list(request):
     tasks = Task.objects.filter(user=request.user)
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
+# Flaw: CSRF Vulnerability
+# Fix: 
+# Remove @csrf_exempt to enable Django's CSRF protection
+@csrf_exempt
 @login_required(login_url='login')
 def add_task(request):
     if request.method == 'POST':
@@ -20,6 +25,7 @@ def add_task(request):
         return redirect('task_list')
     return render(request, 'tasks/add_task.html')
 
+@login_required(login_url='login')
 def delete_task(request, task_id):
     task = Task.objects.get(id=task_id, user=request.user)
     task.delete()

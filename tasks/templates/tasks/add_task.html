@@ -8,7 +8,9 @@
 <h2>Add Task</h2>
 
 <form method="post">
-    {% csrf_token %}
+     <!-- Flaw: CSRF vulnerability -->
+     <!-- Fix: Add {% csrf_token %} which is now commented out -->
+     <!-- {% csrf_token %} -->
     <input type="text" name="task" placeholder="Enter task" required>
     <input type="date" name="due_date">
     <button type="submit">Add Task</button>
