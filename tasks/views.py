@@ -46,7 +46,7 @@ def delete_task(request, task_id):
         conn.commit()
         conn.close()
         return redirect('task_list')
-# Fix: Replace the code after the if-statement with the following code that uses Django's own ORM and deletes the task safely
+# Fix: Replace the code inside the if-statement with the following code that uses Django's own ORM and deletes the task safely
 #        task = Task.objects.get(id=task_id, user=request.user)
 #        task.delete()
 #        return redirect('task_list')
