@@ -1,7 +1,7 @@
 # cbs-project1
 LINK: https://github.com/meeries/csb-project1
 
-This project was done with Python and Django, using the OWASP 2021 list for flaws.
+This project was done with Python and Django, using the [OWASP 2021](https://owasp.org/www-project-top-ten/) list for flaws.
 
 ## Starting the app
 
