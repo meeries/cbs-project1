@@ -41,10 +41,16 @@ This vulnerability can be fixed by adding checks that ensure that the resource (
 https://github.com/meeries/cbs-project1/blob/80913b684321b25e602c18abd2d6087c3b04689a/tasks/views.py#L19
 
 
-## Flaw 3: 
-link
+## Flaw 3: (SQL) Injection
+https://github.com/meeries/cbs-project1/blob/6c899d806484b5a13cc2539c4c324e23ce247115/tasks/views.py#L42
+
 ### Description
+Injection vulnerabilities occur when an application doesn't process data provided by the user properly, making it possible for users to introduce harmful input that then gets interpreted by the web application, when it shouldn't be. A common example of this (and the one demonstrated in this project) is SQL injection, where user input gets directly inserted to an SQL query for execution. The user can then introduce malicious SQL code, which will be executed by the application, possibly causing serious damage. For example, in this project, the flawed deleting of a task is done with ```f"DELETE FROM tasks_task WHERE id = {task_id}"```, where ```task_id``` comes from URL ```http://127.0.0.1:8000/task/{task_id}/delete/```. Now the user can manipulate the URL by adding, for example ```DROP TABLES```, causing serious damage.
+
 ### Fix
+Instead of using a raw SQL query to delete a task, we can use Object-relational mapping (ORM) to escape unwanted or dangerous input. Django has it's own ORM, which lets us query the database safely without having to write raw SQL. 
+
+https://github.com/meeries/cbs-project1/blob/6c899d806484b5a13cc2539c4c324e23ce247115/tasks/views.py#L49
 
 ## Flaw 4: 
 link
