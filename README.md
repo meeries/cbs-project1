@@ -68,10 +68,15 @@ https://github.com/meeries/cbs-project1/blob/d83dc6fb165ccd8cd731a48a42478015cdd
 Fix for ```DEBUG = True```:
 https://github.com/meeries/cbs-project1/blob/d83dc6fb165ccd8cd731a48a42478015cdd22675/taskapp/settings.py#L32
 
-## Flaw 5: 
-link
+## Flaw 5: Security misconfiguration
+https://github.com/meeries/cbs-project1/blob/c5444765fb942156da8add7c7de2e713615f1f43/taskapp/settings.py#L30
+
 ### Description
+Security misconfiguration vulnerabilities occur when security settings are improperly applied or overlooked, leaving a system vulnerable to attacks. These misconfigurations may lead to unauthorized access, data breaches, or disruptions. In this project, the flaw can be seen in that in file ```settings.py```, we have ```DEBUG = True```, due to which we receive very detailed error messages, for example when trying to view a task that doesn't exist. These error messages reveal sensitive information, that can be exploited.
+
 ### Fix
+This flaw can be fixed by changing ```DEBUG = True``` to ```DEBUG = False```. This way, there are no detailed error messages when there is an issue with the application.
+https://github.com/meeries/cbs-project1/blob/c5444765fb942156da8add7c7de2e713615f1f43/taskapp/settings.py#L32
 
 ## Flaw 6: 
 link
