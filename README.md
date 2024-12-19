@@ -28,8 +28,8 @@ Fix in tasks/views.py: https://github.com/meeries/cbs-project1/blob/b937cedd5089
 Fix in tasks/templates/tasks/add_task.html form: https://github.com/meeries/cbs-project1/blob/b937cedd5089da948cd96f96facddac11d71a135/tasks/templates/tasks/add_task.html#L12
 
 
-## Flaw 2 Broken Access Control:
-https://github.com/meeries/cbs-project1/blob/80913b684321b25e602c18abd2d6087c3b04689a/tasks/views.py#L16
+## Flaw 2 Broken Access Control:[
+https://github.com/meeries/cbs-project1/blob/ff0fd04357f81ba145619d7303a83c14ac5c3be9/tasks/views.py#L19
 
 ### Description
 Broken access control is a security vulnerability, where an application fails to properly restrict access to resources or actions based on the user's identity and permissions. This makes it possible for a user to access or modify data, that they are not supposed to be able to.
