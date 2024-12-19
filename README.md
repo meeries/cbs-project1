@@ -27,10 +27,17 @@ Fix in tasks/views.py: https://github.com/meeries/cbs-project1/blob/b937cedd5089
 
 Fix in tasks/templates/tasks/add_task.html form: https://github.com/meeries/cbs-project1/blob/b937cedd5089da948cd96f96facddac11d71a135/tasks/templates/tasks/add_task.html#L12
 
-## Flaw 2:
-link
+## Flaw 2 Broken Access Control:
+https://github.com/meeries/cbs-project1/blob/80913b684321b25e602c18abd2d6087c3b04689a/tasks/views.py#L16
+
 ### Description
+Broken access control is a security vulnerability, where an application fails to properly restrict access to resources or actions based on the user's identity and permissions. This makes it possible for a user to access or modify data, that they are not supposed to be able to.
+For example, the application might use a URL with an ID parameter (```/task/<task_id>``` in this project). When proper access restrictions are not in place, the user can modify the URL by placing any number on ```<task_id>``` and gaining access to viewing tasks that are not theirs.
+
 ### Fix
+This vulnerability can be fixed by adding checks that ensure that the resource (task) the user is trying to access, actually belongs to them. If the user trying to view the task, is not the user that created it, they get redirected to the list of tasks.
+
+https://github.com/meeries/cbs-project1/blob/80913b684321b25e602c18abd2d6087c3b04689a/tasks/views.py#L19
 
 ## Flaw 3: 
 link
