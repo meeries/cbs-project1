@@ -50,8 +50,7 @@ def delete_task(request, task_id):
 #        task = Task.objects.get(id=task_id, user=request.user)
 #        task.delete()
 #        return redirect('task_list')
-    task = get_object_or_404(Task, id=task_id, user=request.user)
-    return render(request, 'tasks/confirm_delete.html', {'task': task})
+    return render(request, 'tasks/confirm_delete.html', {'task_id': task_id})
 
 def user_login(request):
     if request.method == 'POST':
